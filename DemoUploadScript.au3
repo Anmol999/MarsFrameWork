@@ -1,0 +1,5 @@
+ControlFocus("Open","","Edit1")
+Sleep(1500)
+ControlSetText("Open","","Edit1","A:\IC\IC PROJECTS\Internship Project\Project2\marsframework-master\File to upload.txt")
+Sleep(1500)
+ControlClick("Open","","Button1")
