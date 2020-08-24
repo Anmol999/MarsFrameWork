@@ -107,7 +107,7 @@ namespace MarsFramework.Pages
 
         internal void EnterShareSkill()
         {
-
+            //Explicit wait o find the shareskill button element
             GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, By.LinkText("Share Skill"), 5);
 
             //Thread.Sleep(1500);
@@ -115,15 +115,22 @@ namespace MarsFramework.Pages
             //Populating with excel data
             GlobalDefinitions.ExcelLib.PopulateInCollection(@"MarsFramework\ExcelData\TestDataShareSkill.xlsx", "ShareSkill");
             //Enter the Title in textbox 2
+            Thread.Sleep(500);
             Title.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Title"));
             //Enter the Description in textbox 3
+            Thread.Sleep(500);
             Description.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Description"));
+            //Selecting the category
             SelectElement Category = new SelectElement(CategoryDropDown);
             Category.SelectByText(GlobalDefinitions.ExcelLib.ReadData(2, "Category"));
+            //Selecting the sub category
             SelectElement SubCategory = new SelectElement(SubCategoryDropDown);
             SubCategory.SelectByText(GlobalDefinitions.ExcelLib.ReadData(2, "SubCategory"));
+            //Entering the tag
             Tags.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Tags") + "\n");
+            //Clicking the Service type option
             ServiceTypeOptions.Click();
+            //Clicking the Location option
             LocationTypeOption.Click();
            
 
@@ -158,10 +165,12 @@ namespace MarsFramework.Pages
 
 
 
-
+            
             Thread.Sleep(500);
+            //Clicking the Skills option
             SkillTradeOption.Click();
-            Thread.Sleep(500);            
+            Thread.Sleep(500);     
+            //sending the skill exchange
             SkillExchange.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "SkillExchange") + "\n");
 
 
@@ -177,9 +186,12 @@ namespace MarsFramework.Pages
 
 
             Thread.Sleep(3000);
+            //clicking the Active button
             ActiveOption.Click();
+            //Saving the skills
             Save.Click();
 
+            //Asserts
             Thread.Sleep(3000);
             var DescriptionAssert = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[4]")).Text;           
             NUnit.Framework.Assert.That(DescriptionAssert, Is.EqualTo(GlobalDefinitions.ExcelLib.ReadData(2, "Description")));
@@ -189,7 +201,7 @@ namespace MarsFramework.Pages
 
 
 
-            //Clearing the added skills
+            //Clearing out the added skills
             Thread.Sleep(500);
             manageListingsLink.Click();
             Thread.Sleep(500);         

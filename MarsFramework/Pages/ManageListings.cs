@@ -92,27 +92,38 @@ namespace MarsFramework.Pages
         internal void EditManageListings()
         {
             Thread.Sleep(500);
+            //Clicking the manage listing button
             manageListingsLink.Click();
             Thread.Sleep(500);
+            //Clicking edit button(edit is acting as adding option only)
             edit.Click();
             Thread.Sleep(500);
+            //Populating with excel data
             GlobalDefinitions.ExcelLib.PopulateInCollection(@"MarsFramework\ExcelData\TestDataManageListings.xlsx", "ManageListings");
+            //Enetering Title
             Title.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Title"));
+            //Entering Description
             Description.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Description"));
+            //Selecting Category
             SelectElement Category = new SelectElement(CategoryDropDown);
             Category.SelectByText(GlobalDefinitions.ExcelLib.ReadData(2, "Category"));
+            //Slecting Subcategory
             SelectElement SubCategory = new SelectElement(SubCategoryDropDown);
             SubCategory.SelectByText(GlobalDefinitions.ExcelLib.ReadData(2, "SubCategory"));
+            //Entering the Tag
             Tags.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Tags") + "\n");
+            //Clicking the Service type
             ServiceTypeOptions.Click();
+            //Clicking the Type option
             LocationTypeOption.Click();
 
             //Handling the Date and time
             Thread.Sleep(500);
-            StartDateDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Startdate"));
+            StartDateDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Startdate"));//Sending start date data
             Thread.Sleep(500);
-            EndDateDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Enddate"));
+            EndDateDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Enddate"));//sending end date data
             Thread.Sleep(1500);
+            //Looping for the targeted day, timings and corresponding check box
             for (int i = 0; i <= 9; i++)
             {
                 var checkBox = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[7]/div[2]/div/div[" + (2 + i) + "]/div[1]/div/input"));
@@ -123,10 +134,13 @@ namespace MarsFramework.Pages
                 if (GlobalDefinitions.ExcelLib.ReadData(2, "Selectday") == dayName.Text)
                 {
                     Thread.Sleep(500);
+                    //Clicking checkbox
                     checkBox.Click();
                     Thread.Sleep(500);
+                    //Entering particular start timing in targeted day
                     startTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Starttime"));
                     Thread.Sleep(500);
+                    //Entering particular End timings in targeted day
                     endTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime"));
                     break;
                 }
@@ -134,12 +148,16 @@ namespace MarsFramework.Pages
             }
 
             Thread.Sleep(500);
+            //Clicking Skills Exchange
             SkillTradeOptionSkillExchange.Click();
             Thread.Sleep(500);
+            //Enetering Skill Exchnge Tag
             SkillExchangeTags.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "SkillExchange") + "\n");
             Thread.Sleep(500);
+            //Clicking Credit 
             SkillTradeOptionCredit.Click();
             Thread.Sleep(500);
+            //Entering Credit
             CreditAmount.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Credit"));
 
             //Uploading File
@@ -152,11 +170,14 @@ namespace MarsFramework.Pages
             Thread.Sleep(2000);
             autoIt.Send("{ENTER}");
 
+
+            //Clicking Active option
             ActiveOption.Click();
+            //Saving the new/ updated Manage skills
             Save.Click();
 
 
-
+            //Asserts
             Thread.Sleep(3000);
             var DescriptionAssert = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[4]")).Text;
             NUnit.Framework.Assert.That(DescriptionAssert, Is.EqualTo(GlobalDefinitions.ExcelLib.ReadData(2, "Description")));
@@ -167,31 +188,39 @@ namespace MarsFramework.Pages
         internal void DeleteManageListings()
         {
             Thread.Sleep(500);
+            //Clicking the Manage listing button again
             manageListingsLink.Click();
-            Thread.Sleep(500);           
-            GlobalDefinitions.ExcelLib.PopulateInCollection(@"MarsFramework\ExcelData\TestDataManageListings.xlsx", "ManageListings");                
+            Thread.Sleep(500);   
+            //Populating with data from excel
+            GlobalDefinitions.ExcelLib.PopulateInCollection(@"MarsFramework\ExcelData\TestDataManageListings.xlsx", "ManageListings");   
+            //Counting nuber of enteries in body of the table
             var DescriptionCount = GlobalDefinitions.driver.FindElements(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr")).Count;
            
             for (int i = 1; i <= DescriptionCount; i++)
-            {               
+            {           //Getting the text of the added description    
                 var DescriptionText = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[" + i + "]/td[4]")).Text;
                 Console.WriteLine(DescriptionText);
+                //Getting the text of the added Title
                 var TitleText = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[" + i + "]/td[3]")).Text;
                 Console.WriteLine(TitleText);
                       
 
-
+                //Getting the data of the Description we awere suppose to enter in edit part
                 var DescriptionToDelete = GlobalDefinitions.ExcelLib.ReadData(2, "Description");
                 Console.WriteLine(DescriptionToDelete);
+                //Getting the data of the Title we awere suppose to enter in edit part
                 var TitleToDelete = GlobalDefinitions.ExcelLib.ReadData(2, "Title");
                 Console.WriteLine(TitleToDelete);                  
-               
+               // Doing if validation to compare title added with title that was required to be added and similar for the description
                 if (DescriptionText == DescriptionToDelete && TitleText == TitleToDelete)
                 {                   
                     Thread.Sleep(500);
+                    // Selecting the delete button in front of the selected element
                     var DeleteButton = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[" + i + "]/td[8]/div/button[3]/i"));
+                    //Clicking the Delete Button
                     DeleteButton.Click();
-                    Thread.Sleep(500);                    
+                    Thread.Sleep(500);    
+                    //Click the confirmation button with yes or no option to delete
                     clickActionsButton.Click();                    
                     break;
                 }
@@ -200,6 +229,7 @@ namespace MarsFramework.Pages
                     Console.WriteLine("Skill is not Present");
                 }
             }
+            //Asserts
             Thread.Sleep(3000);
             var DescriptionAssert2 = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[4]")).Text;
             NUnit.Framework.Assert.That(DescriptionAssert2, Is.Not.EqualTo(GlobalDefinitions.ExcelLib.ReadData(2, "Description")));
