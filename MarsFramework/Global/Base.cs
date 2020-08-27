@@ -20,6 +20,7 @@ namespace MarsFramework.Global
         public static string Url = MarsResource.Url;
         public static string Username = MarsResource.Username;
         public static string Password = MarsResource.Password;
+        public static string FileToUploadPath = MarsResource.FileToUploadPath;
         #endregion
 
         #region reports
@@ -73,9 +74,11 @@ namespace MarsFramework.Global
             // Screenshot
             String img = SaveScreenShotClass.SaveScreenshot(GlobalDefinitions.driver, "Report");
             //AddScreenCapture(@"E:\Dropbox\VisualStudio\Projects\Beehive\TestReports\ScreenShots\");
-           // test.Log(LogStatus.Info, "Image example: " + img);
+            var status = TestContext.CurrentContext.Result.Outcome;
+            var errorMessage = TestContext.CurrentContext.Result.Message;
+           test.Log(LogStatus.Info, "Image example: " + img);
             // end test. (Reports)
-//            extent.EndTest(test);
+            extent.EndTest(test);
             // calling Flush writes everything to the log file (Reports)
             extent.Flush();
             // Close the driver :)            

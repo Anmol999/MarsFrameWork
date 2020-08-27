@@ -8,6 +8,7 @@ using System.Threading;
 using AutoItX3Lib;
 using static NUnit.Core.NUnitFramework;
 using NUnit.Framework;
+using RelevantCodes.ExtentReports;
 
 namespace MarsFramework.Pages
 {
@@ -117,6 +118,15 @@ namespace MarsFramework.Pages
             //Enter the Title in textbox 2
             Thread.Sleep(500);
             Title.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Title"));
+            if (Title.GetAttribute("value") == GlobalDefinitions.ExcelLib.ReadData(2, "Title"))
+            {
+                Base.test.Log(LogStatus.Pass, "Title is entered and displayed successfully");
+            }
+            else
+            {
+                Base.test.Log(LogStatus.Fail, "Title is not enetered and displayed successfully");
+            }
+       
             //Enter the Description in textbox 3
             Thread.Sleep(500);
             Description.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Description"));
@@ -132,7 +142,6 @@ namespace MarsFramework.Pages
             ServiceTypeOptions.Click();
             //Clicking the Location option
             LocationTypeOption.Click();
-           
 
 
             //Handling the Date and time
@@ -160,7 +169,7 @@ namespace MarsFramework.Pages
                 }
             }
 
-                 
+             
             
 
 
@@ -180,7 +189,8 @@ namespace MarsFramework.Pages
             AutoItX3 autoIt = new AutoItX3();
             autoIt.WinActivate("Open");
             Thread.Sleep(3000);
-            autoIt.Send(@"C:\Users\HP\Downloads\marsframework-master\FileToUpload.txt");
+            //autoIt.Send(@"C:\Users\HP\Downloads\marsframework-master\FileToUpload.txt");
+            autoIt.Send(Base.FileToUploadPath);
             Thread.Sleep(2000);
             autoIt.Send("{ENTER}");
 
@@ -195,12 +205,32 @@ namespace MarsFramework.Pages
             Thread.Sleep(3000);
             var DescriptionAssert = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[4]")).Text;           
             NUnit.Framework.Assert.That(DescriptionAssert, Is.EqualTo(GlobalDefinitions.ExcelLib.ReadData(2, "Description")));
-          
+
+        }
 
 
+        // Verify share skills   
+        internal bool Verify()
+        {
+            //Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            Thread.Sleep(1000);
+            int DescriptionCountVerify = GlobalDefinitions.driver.FindElements(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr")).Count;
+            bool recordFound = false;
+            for (int i = 1; i <= DescriptionCountVerify; i++)
+            {
+                var DescriptionTextVerify = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[" + i + "]/td[4]")).Text;
 
+                if (DescriptionTextVerify == GlobalDefinitions.ExcelLib.ReadData(2, "Description"))
+                {
+                    recordFound = true;
+                    break;
+                }
+            }
+            return recordFound;
+        }
 
-
+        internal void SkillClearoutAddedData()
+        {
             //Clearing out the added skills
             Thread.Sleep(500);
             manageListingsLink.Click();

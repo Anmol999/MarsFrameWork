@@ -79,6 +79,15 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A:\IC\IC PROJECTS\Internship Project\Project2\Project with extent report\marsframework-master\FileToUpload.txt.
+        /// </summary>
+        internal static string FileToUploadPath {
+            get {
+                return ResourceManager.GetString("FileToUploadPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to true.
         /// </summary>
         internal static string IsLogin {
@@ -97,7 +106,7 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\HP\Desktop\marsframework-master\MarsFramework\TestReports\Report.
+        ///   Looks up a localized string similar to A:\IC\IC PROJECTS\Internship Project\Project2\Project with extent report\marsframework-master\MarsFramework\TestReports\Report\ReportAnmol.html.
         /// </summary>
         internal static string ReportPath {
             get {
@@ -106,7 +115,7 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\HP\Desktop\marsframework-master\MarsFramework\TestReports\ReportXML.
+        ///   Looks up a localized string similar to A:\IC\IC PROJECTS\Internship Project\Project2\Project with extent report\marsframework-master\MarsFramework\TestReports\ReportXML\Anmol1.xml.
         /// </summary>
         internal static string ReportXMLPath {
             get {
@@ -115,7 +124,7 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\HP\Desktop\marsframework-master\MarsFramework\TestReports\Screenshots.
+        ///   Looks up a localized string similar to A:\IC\IC PROJECTS\Internship Project\Project2\Project with extent report\marsframework-master\MarsFramework\TestReports\Screenshots.
         /// </summary>
         internal static string ScreenShotPath {
             get {

@@ -124,6 +124,9 @@
   <data name="ExcelPath" xml:space="preserve">
     <value>C:\Users\HP\Desktop\marsframework-master\MarsFramework\ExcelData</value>
   </data>
+  <data name="FileToUploadPath" xml:space="preserve">
+    <value>A:\IC\IC PROJECTS\Internship Project\Project2\Project with extent report\marsframework-master\FileToUpload.txt</value>
+  </data>
   <data name="IsLogin" xml:space="preserve">
     <value>true</value>
     <comment>If true Login, else Register</comment>
@@ -132,13 +135,13 @@
     <value>Marsproject@9</value>
   </data>
   <data name="ReportPath" xml:space="preserve">
-    <value>C:\Users\HP\Desktop\marsframework-master\MarsFramework\TestReports\Report</value>
+    <value>A:\IC\IC PROJECTS\Internship Project\Project2\Project with extent report\marsframework-master\MarsFramework\TestReports\Report\ReportAnmol.html</value>
   </data>
   <data name="ReportXMLPath" xml:space="preserve">
-    <value>C:\Users\HP\Desktop\marsframework-master\MarsFramework\TestReports\ReportXML</value>
+    <value>A:\IC\IC PROJECTS\Internship Project\Project2\Project with extent report\marsframework-master\MarsFramework\TestReports\ReportXML\Anmol1.xml</value>
   </data>
   <data name="ScreenShotPath" xml:space="preserve">
-    <value>C:\Users\HP\Desktop\marsframework-master\MarsFramework\TestReports\Screenshots</value>
+    <value>A:\IC\IC PROJECTS\Internship Project\Project2\Project with extent report\marsframework-master\MarsFramework\TestReports\Screenshots</value>
   </data>
   <data name="Url" xml:space="preserve">
     <value>http://localhost:5000/Home</value>
