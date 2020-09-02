@@ -122,7 +122,10 @@
     <comment>1 for firefox and 2 for Chrome</comment>
   </data>
   <data name="ExcelPath" xml:space="preserve">
-    <value>C:\Users\HP\Desktop\marsframework-master\MarsFramework\ExcelData</value>
+    <value>C:\Users\HP\Desktop\extent report for the whole project\marsframework-master\MarsFramework\ExcelData</value>
+  </data>
+  <data name="FileToUploadPath" xml:space="preserve">
+    <value>C:\Users\HP\Desktop\extent report for the whole project\marsframework-master\FileToUpload.txt</value>
   </data>
   <data name="IsLogin" xml:space="preserve">
     <value>true</value>
@@ -132,13 +135,13 @@
     <value>Marsproject@9</value>
   </data>
   <data name="ReportPath" xml:space="preserve">
-    <value>C:\Users\HP\Desktop\marsframework-master\MarsFramework\TestReports\Report</value>
+    <value>C:\Users\HP\Desktop\extent report for the whole project\marsframework-master\MarsFramework\TestReports\Report\Anmol.html</value>
   </data>
   <data name="ReportXMLPath" xml:space="preserve">
-    <value>C:\Users\HP\Desktop\marsframework-master\MarsFramework\TestReports\ReportXML</value>
+    <value>C:\Users\HP\Desktop\extent report for the whole project\marsframework-master\MarsFramework\TestReports\ReportXML\Anmol1.xml</value>
   </data>
   <data name="ScreenShotPath" xml:space="preserve">
-    <value>C:\Users\HP\Desktop\marsframework-master\MarsFramework\TestReports\Screenshots</value>
+    <value>C:\Users\HP\Desktop\extent report for the whole project\marsframework-master\MarsFramework\TestReports\Screenshots</value>
   </data>
   <data name="Url" xml:space="preserve">
     <value>http://localhost:5000/Home</value>

@@ -166,7 +166,7 @@ namespace MarsFramework.Pages
             AutoItX3 autoIt = new AutoItX3();
             autoIt.WinActivate("Open");
             Thread.Sleep(3000);
-            autoIt.Send(@"C:\Users\HP\Downloads\marsframework-master\FileToUpload.txt");
+            autoIt.Send(Base.FileToUploadPath);
             Thread.Sleep(2000);
             autoIt.Send("{ENTER}");
 
@@ -183,8 +183,26 @@ namespace MarsFramework.Pages
             NUnit.Framework.Assert.That(DescriptionAssert, Is.EqualTo(GlobalDefinitions.ExcelLib.ReadData(2, "Description")));
         }
 
+        // Verify share skills   
+        internal bool Verify()
+        {
+            //Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            Thread.Sleep(1000);
+            int DescriptionCountVerify = GlobalDefinitions.driver.FindElements(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr")).Count;
+            bool recordFound = false;
+            for (int i = 1; i <= DescriptionCountVerify; i++)
+            {
+                var DescriptionTextVerify = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[" + i + "]/td[4]")).Text;
 
-        
+                if (DescriptionTextVerify == GlobalDefinitions.ExcelLib.ReadData(2, "Description"))
+                {
+                    recordFound = true;
+                    break;
+                }
+            }
+            return recordFound;
+        }
+
         internal void DeleteManageListings()
         {
             Thread.Sleep(500);

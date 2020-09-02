@@ -70,11 +70,20 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\HP\Desktop\marsframework-master\MarsFramework\ExcelData.
+        ///   Looks up a localized string similar to C:\Users\HP\Desktop\extent report for the whole project\marsframework-master\MarsFramework\ExcelData.
         /// </summary>
         internal static string ExcelPath {
             get {
                 return ResourceManager.GetString("ExcelPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C:\Users\HP\Desktop\extent report for the whole project\marsframework-master\FileToUpload.txt.
+        /// </summary>
+        internal static string FileToUploadPath {
+            get {
+                return ResourceManager.GetString("FileToUploadPath", resourceCulture);
             }
         }
         
@@ -97,7 +106,7 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\HP\Desktop\marsframework-master\MarsFramework\TestReports\Report.
+        ///   Looks up a localized string similar to C:\Users\HP\Desktop\extent report for the whole project\marsframework-master\MarsFramework\TestReports\Report\Anmol.html.
         /// </summary>
         internal static string ReportPath {
             get {
@@ -106,7 +115,7 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\HP\Desktop\marsframework-master\MarsFramework\TestReports\ReportXML.
+        ///   Looks up a localized string similar to C:\Users\HP\Desktop\extent report for the whole project\marsframework-master\MarsFramework\TestReports\ReportXML\Anmol1.xml.
         /// </summary>
         internal static string ReportXMLPath {
             get {
@@ -115,7 +124,7 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\HP\Desktop\marsframework-master\MarsFramework\TestReports\Screenshots.
+        ///   Looks up a localized string similar to C:\Users\HP\Desktop\extent report for the whole project\marsframework-master\MarsFramework\TestReports\Screenshots.
         /// </summary>
         internal static string ScreenShotPath {
             get {
